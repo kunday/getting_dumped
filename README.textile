@@ -1,0 +1,14 @@
+GettingDumped is an rspec formatter that collects metrics information on tests across multiple runs which can be used to generate various metrics.
+
+This project is still under active development.
+
+h2. Installation
+
+Installing GettingDumped is easy. Just put it in your @Gemfile@ and run your specs like this from now on:
+
+bc. $ rspec --format GettingDumped --color spec
+
+If you want to use GettingDumped as your default formatter, simply put the options in your @.rspec@ file:
+
+bc. --format GettingDumped
+--color
