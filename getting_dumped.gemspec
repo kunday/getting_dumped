@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "getting_dumped"
-  s.version     = '0.0.6'
+  s.version     = '0.0.2'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Arvind Kunday"]
   s.email       = ["hi@kunday.com"]

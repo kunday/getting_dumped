@@ -1,5 +1,6 @@
 require 'rspec'
 require 'rspec/core/formatters/base_formatter'
+require 'models'
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def initialize(options)
