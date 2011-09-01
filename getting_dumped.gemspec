@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "getting_dumped"
-  s.version     = '0.0.2'
+  s.version     = '0.0.2.1'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Arvind Kunday"]
   s.email       = ["hi@kunday.com"]
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 #  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency('rspec', ["~> 2.0"])
+  s.add_dependency('rspec')
   s.add_dependency('rake')
   s.add_dependency('data_mapper')
   s.add_dependency('dm-sqlite-adapter')

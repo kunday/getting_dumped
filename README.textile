@@ -1,5 +1,7 @@
 GettingDumped is an rspec formatter that collects metrics information on tests across multiple runs.
 
+Get dumped, this time for a good reason!
+
 This project is still under active development.
 
 h2. Installation
