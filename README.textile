@@ -2,7 +2,7 @@ GettingDumped is an rspec formatter that collects metrics information on tests a
 
 Get dumped, this time for a good reason!
 
-!https://travis-ci.org/kunday/getting_dumped.png!http://travis-ci.org/kunday/getting-dumped
+!https://travis-ci.org/kunday/getting_dumped.png(Travis Build Status)!:http://travis-ci.org/kunday/getting-dumped
 
 This project is still under active development.
 
