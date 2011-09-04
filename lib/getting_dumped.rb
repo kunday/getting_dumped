@@ -9,6 +9,7 @@ class GettingDumped < RSpec::Core::Formatters::BaseFormatter
     @time = nil
     @start_time = Time.now
     @example_times = []
+    @success = true
   end
 
   def start(count)
@@ -26,9 +27,19 @@ class GettingDumped < RSpec::Core::Formatters::BaseFormatter
 
   def start_dump
     super
+    dump
+  end
+
+  def example_failed(example)
+    p "Example Failed"
+    super
+    @success = false
+  end
+
+  def dump
     p "Dumping Results. This could take a moment."
 
-    run = Run.new(:run_at => Time.now, :duration => Time.now - @start_time)
+    run = Run.new(:run_at => Time.now, :duration => Time.now - @start_time, :success => @success)
     run.save
 
     @example_times.each do |example|
