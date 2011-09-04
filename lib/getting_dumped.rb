@@ -1,7 +1,9 @@
 require 'rspec'
 require 'rspec/core/formatters/base_formatter'
+require 'datamapper'
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
+  attr_accessor :time, :start_time, :example_times
   def initialize(options)
     super
     @time = nil
@@ -24,8 +26,6 @@ class GettingDumped < RSpec::Core::Formatters::BaseFormatter
 
   def start_dump
     super
-    p "Total Time: #{Time.now - @time}"
-
     p "Dumping Results. This could take a moment."
 
     run = Run.new(:run_at => Time.now, :duration => Time.now - @start_time)
