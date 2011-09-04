@@ -1,5 +1,9 @@
-require "sinatra"
+#!/usr/bin/env ruby
+
 require "getting_dumped"
+require "sinatra"
+
+set :run, true
 
 get '/runs' do
   @runs = Run.all
