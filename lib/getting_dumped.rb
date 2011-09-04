@@ -1,6 +1,6 @@
 require 'rspec'
 require 'rspec/core/formatters/base_formatter'
-require 'datamapper'
+require 'models'
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def initialize(options)
@@ -36,7 +36,10 @@ class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def start_dump
     super
     time = DateTime.now
-    @run.update(:ended_at => time, :success => @success, :run_time => time - @run.started_at)
+    @run.ended_at = time
+    @run.success = @success
+    @run.run_time = time - @run.started_at
+    @run.save
   end
 
   private

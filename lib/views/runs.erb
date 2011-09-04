@@ -1,0 +1,13 @@
+<table>
+  <tbody>
+    <% @runs.all.each do |run|%>
+      <tr>
+        <td><%= run.id %></td>
+        <td><%= run.started_at %></td>
+        <td><%= run.ended_at %></td>
+        <td><%= run.run_time %></td>
+        <td><%= run.success %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
