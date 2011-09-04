@@ -8,7 +8,13 @@ class Example
 
   property :id, Serial
   property :name, Text
-  property :run_time, String
+  property :started_at, DateTime
+  property :finished_at, DateTime
+  property :run_time, Float
+  property :status, String
+  property :backtrace, Text
+  property :failure, String
+  property :exception, Text
 
   belongs_to :run
 end
@@ -17,8 +23,9 @@ class Run
   include DataMapper::Resource
 
   property :id, Serial
-  property :run_at, DateTime
-  property :duration, String
+  property :started_at, DateTime
+  property :ended_at, DateTime
+  property :run_time, String
   property :success, String
 
   has n, :examples

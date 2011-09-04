@@ -3,49 +3,54 @@ require 'rspec/core/formatters/base_formatter'
 require 'datamapper'
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
-  attr_accessor :time, :start_time, :example_times
   def initialize(options)
     super
-    @time = nil
-    @start_time = Time.now
-    @example_times = []
     @success = true
+    @run = Run.create!(:started_at => Time.now)
   end
 
   def start(count)
-    p "Running #{count} examples"
+    super
   end
 
   def example_started(example)
-    @time = Time.now
     super
   end
+
+  def example_pending(example)
+    super
+    save_example(example)
+  end
+
   def example_passed(example)
     super
-    @example_times << [example.full_description, Time.now - @time]
+    save_example(example)
+  end
+
+  def example_failed(example)
+    super
+    save_example(example)
+    @success = false
   end
 
   def start_dump
     super
-    dump
+    time = DateTime.now
+    @run.update(:ended_at => time, :success => @success, :run_time => time - @run.started_at)
   end
 
-  def example_failed(example)
-    p "Example Failed"
-    super
-    @success = false
-  end
+  private
 
-  def dump
-    p "Dumping Results. This could take a moment."
-
-    run = Run.new(:run_at => Time.now, :duration => Time.now - @start_time, :success => @success)
-    run.save
-
-    @example_times.each do |example|
-      Example.new(:name => example[0], :run_time => example[1], :run_id => run.id).save
+  def save_example(example)
+    metadata = example.metadata[:execution_result]
+    ex = Example.new(:name => example.full_description, :started_at => metadata[:finished_at], :finished_at => metadata[:finished_at],
+                    :run_time => metadata[:run_time], :status => metadata[:status], :run_id => @run.id)
+    if metadata[:status] == "failed"
+      exception = metadata[:exception_encountered] || metadata[:exception] # rspec 2.0 || rspec 2.2
+      ex.backtrace = exception.backtrace
+      ex.exception = read_failed_line(exception, example)
     end
-
-    p "Dumping complete"
+    ex.save
   end
+
 end
