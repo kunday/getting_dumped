@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
+require 'getting_dumped'
 require 'getting_dumped/app'
-GettingDumpedServer.run!
