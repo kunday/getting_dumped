@@ -1,10 +1,11 @@
 require 'data_mapper'
 require 'dm-migrations'
 
-DataMapper.setup(:default, {
-    :database => 'db/examples.sqlite3',
-    :adapter => 'sqlite3'
-  })
+DataMapper.setup(:default, "sqlite3:db/examples.sqlite3")
+  #                {
+  #   :database => 'db/examples.sqlite3',
+  #   :adapter => 'sqlite3'
+  # })
 
 class Example
   include DataMapper::Resource
