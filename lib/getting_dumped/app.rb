@@ -1,5 +1,5 @@
-require 'sinatra'
-require 'models'
+require "sinatra"
+require "models"
 
 get '/runs' do
   @runs = Run.all

@@ -1,6 +1,6 @@
 require 'rspec'
 require 'rspec/core/formatters/base_formatter'
-require 'models'
+require 'getting_dumped/models'
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def initialize(options)
@@ -47,7 +47,7 @@ class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def save_example(example)
     metadata = example.metadata[:execution_result]
     ex = Example.new(:name => example.full_description, :started_at => metadata[:finished_at], :finished_at => metadata[:finished_at],
-                    :run_time => metadata[:run_time], :status => metadata[:status], :run_id => @run.id)
+                     :run_time => metadata[:run_time], :status => metadata[:status], :run_id => @run.id)
     if metadata[:status] == "failed"
       exception = metadata[:exception_encountered] || metadata[:exception] # rspec 2.0 || rspec 2.2
       ex.backtrace = exception.backtrace
