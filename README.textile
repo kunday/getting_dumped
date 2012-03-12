@@ -8,7 +8,17 @@ This project is still under active development.
 
 h2. Installation
 
-Installing GettingDumped is easy. Just put it in your @Gemfile@ and run your specs like this from now on:
+Installing GettingDumped is easy. 
+You can add the GettingDumped gem by adding it to Gemfile as follows:
+
+bc. gem "getting_dumped"
+
+or if you don't use bundler for package management, you can install it using
+
+bc. gem install getting_dumped
+
+from the command line.
+Just put it in your @Gemfile@ and run your specs like this from now on:
 
 bc. $ rspec --format GettingDumped --color spec
 
@@ -16,3 +26,9 @@ If you want to use GettingDumped as your default formatter, simply put the optio
 
 bc. --format GettingDumped
 --color
+
+Once you start running tests, it will collect the test run times and dump it to the local sqlite database.
+
+You can view the output by typing in:
+
+bc. bundle exec getting_dumped_server
