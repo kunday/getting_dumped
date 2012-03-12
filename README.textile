@@ -32,3 +32,7 @@ Once you start running tests, it will collect the test run times and dump it to 
 You can view the output by typing in:
 
 bc. bundle exec getting_dumped_server
+
+You can then browse the run information at
+
+bc. http://localhost:4567/runs
