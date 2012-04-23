@@ -8,7 +8,7 @@ class GettingDumpedServer < Sinatra::Application
   end
 
   get '/run/:id' do
-    @examples = Run.find(params[:id]).first.examples
+    @examples = Run.find(params["id"]).first.examples
     erb :examples
   end
 end
