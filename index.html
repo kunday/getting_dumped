@@ -17,7 +17,7 @@
     <div class="wrapper">
       <header>
         <h1 class="header">Getting dumped</h1>
-        <p class="header">Rspec Formatter which aggregates information across multiple runs</p>
+        <p class="header">Rspec Formatter historical runs data aggregator.</p>
 
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/kunday/getting_dumped/zipball/master">Download ZIP</a></li>
@@ -30,32 +30,44 @@
 
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <p>h1. GettingDumped  "!<a href="http://stillmaintained.com/kunday/getting_dumped.png!%22:http://stillmaintained.com/kunday/getting_dumped">http://stillmaintained.com/kunday/getting_dumped.png!":http://stillmaintained.com/kunday/getting_dumped</a> !<a href="https://travis-ci.org/kunday/getting_dumped.png(Travis">https://travis-ci.org/kunday/getting_dumped.png(Travis</a> Build Status)!:<a href="http://travis-ci.org/kunday/getting-dumped">http://travis-ci.org/kunday/getting-dumped</a></p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>GettingDumped is an rspec formatter that collects metrics information on tests across multiple runs.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>Get dumped, this time for a good reason!</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>This project is still under active development.</p>
 
-<h3>Designer Templates</h3>
+<p>h2. Installation</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Installing GettingDumped is easy. 
+You can add the GettingDumped gem by adding it to Gemfile as follows:</p>
 
-<h3>Rather Drive Stick?</h3>
+<p>bc. gem "getting_dumped"</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>or if you don't use bundler for package management, you can install it using</p>
 
-<h3>Authors and Contributors</h3>
+<p>bc. gem install getting_dumped</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>from the command line.
+Just put it in your @Gemfile@ and run your specs like this from now on:</p>
 
-<h3>Support or Contact</h3>
+<p>bc. $ rspec --format GettingDumped --color spec</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>If you want to use GettingDumped as your default formatter, simply put the options in your @.rspec@ file:</p>
+
+<p>bc. --format GettingDumped
+--color</p>
+
+<p>Once you start running tests, it will collect the test run times and dump it to the local sqlite database.</p>
+
+<p>You can view the output by typing in:</p>
+
+<p>bc. bundle exec getting_dumped_server</p>
+
+<p>You can then browse the run information at</p>
+
+<p>bc. http://localhost:4567/runs</p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
