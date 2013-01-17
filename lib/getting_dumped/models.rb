@@ -1,6 +1,9 @@
 require 'data_mapper'
 require 'dm-migrations'
 
+unless File.exists?("db")
+	Dir.mkdir('db')
+end
 DataMapper.setup(:default, "sqlite3:db/examples.sqlite3")
 
 class Example
