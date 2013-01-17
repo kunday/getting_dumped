@@ -30,7 +30,9 @@
 
       </header>
       <section>
-        <p>h1. GettingDumped  "!<a href="http://stillmaintained.com/kunday/getting_dumped.png!%22:http://stillmaintained.com/kunday/getting_dumped">http://stillmaintained.com/kunday/getting_dumped.png!":http://stillmaintained.com/kunday/getting_dumped</a> !<a href="https://travis-ci.org/kunday/getting_dumped.png(Travis">https://travis-ci.org/kunday/getting_dumped.png(Travis</a> Build Status)!:<a href="http://travis-ci.org/kunday/getting-dumped">http://travis-ci.org/kunday/getting-dumped</a></p>
+        <h1>GettingDumped</h1>
+
+<p><img src="http://stillmaintained.com/kunday/getting_dumped.png" alt="Maintenance Status"><img src="https://travis-ci.org/kunday/getting_dumped.png" alt="Travis Build Status"></p>
 
 <p>GettingDumped is an rspec formatter that collects metrics information on tests across multiple runs.</p>
 
@@ -38,36 +40,35 @@
 
 <p>This project is still under active development.</p>
 
-<p>h2. Installation</p>
+<h2>Installation</h2>
 
 <p>Installing GettingDumped is easy. 
 You can add the GettingDumped gem by adding it to Gemfile as follows:</p>
 
-<p>bc. gem "getting_dumped"</p>
+<p><code>gem "getting_dumped"</code></p>
 
 <p>or if you don't use bundler for package management, you can install it using</p>
 
-<p>bc. gem install getting_dumped</p>
+<p><code>gem install getting_dumped</code></p>
 
 <p>from the command line.
 Just put it in your @Gemfile@ and run your specs like this from now on:</p>
 
-<p>bc. $ rspec --format GettingDumped --color spec</p>
+<p><code>$ rspec --format GettingDumped --color spec</code></p>
 
 <p>If you want to use GettingDumped as your default formatter, simply put the options in your @.rspec@ file:</p>
 
-<p>bc. --format GettingDumped
---color</p>
+<p><code>--format GettingDumped --color</code></p>
 
 <p>Once you start running tests, it will collect the test run times and dump it to the local sqlite database.</p>
 
 <p>You can view the output by typing in:</p>
 
-<p>bc. bundle exec getting_dumped_server</p>
+<p><code>bundle exec getting_dumped_server</code></p>
 
 <p>You can then browse the run information at</p>
 
-<p>bc. http://localhost:4567/runs</p>
+<p><code>http://localhost:4567/runs</code></p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
