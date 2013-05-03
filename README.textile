@@ -1,3 +1,5 @@
+h1. Not compatible with 1.8.7 as yet! 
+
 h1. GettingDumped  "!http://stillmaintained.com/kunday/getting_dumped.png!":http://stillmaintained.com/kunday/getting_dumped !https://travis-ci.org/kunday/getting_dumped.png(Travis Build Status)!:http://travis-ci.org/kunday/getting-dumped
 
 GettingDumped is an rspec formatter that collects metrics information on tests across multiple runs.
