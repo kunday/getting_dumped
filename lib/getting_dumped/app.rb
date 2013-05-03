@@ -3,12 +3,12 @@ require "sinatra"
 
 class GettingDumpedServer < Sinatra::Application
   get '/runs' do
-    @runs = Run.all
+    @runs = DB[:runs]
     erb :runs
   end
 
   get '/run/:id' do
-    @examples = Run.find(params["id"]).first.examples
+    @examples = DB[:examples].where("run_id = ?", params[:id]).all
     erb :examples
   end
 end

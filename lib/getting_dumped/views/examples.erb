@@ -2,14 +2,14 @@
   <tbody>
     <% @examples.each do |example| %>
       <tr>
-        <td><%= example.name %></td>
-        <td><%= example.started_at %></td>
-        <td><%= example.finished_at %></td>
-        <td><%= example.run_time %></td>
-        <td><%= example.status %></td>
-        <td><%= example.backtrace %></td>
-        <td><%= example.failure %></td>
-        <td><%= example.exception %></td>
+        <td><%= example[:name] %></td>
+        <td><%= example[:started_at] %></td>
+        <td><%= example[:finished_at] %></td>
+        <td><%= example[:run_time] %></td>
+        <td><%= example[:status] %></td>
+        <td><%= example[:backtrace] %></td>
+        <td><%= example[:failure] %></td>
+        <td><%= example[:exception] %></td>
       </tr>
     <% end %>
   </tbody>
