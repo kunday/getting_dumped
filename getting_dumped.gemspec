@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "getting_dumped"
-  s.version     = '0.0.2.4'
+  s.version     = '0.0.3.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Arvind Kunday"]
   s.email       = ["hi@kunday.com"]
@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency('rspec')
   s.add_dependency('rake')
-  s.add_dependency('data_mapper')
-  s.add_dependency('dm-sqlite-adapter')
+  s.add_dependency('sequel')
+  s.add_dependency('sqlite3')
   s.add_dependency('sinatra')
   s.add_dependency('sinatra-snap')
 end

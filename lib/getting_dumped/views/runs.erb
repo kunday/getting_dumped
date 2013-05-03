@@ -2,11 +2,11 @@
   <tbody>
     <% @runs.all.each do |run|%>
       <tr>
-        <td><a href="run/<%=run.id%>">link</a></td>
-        <td><%= run.started_at %></td>
-        <td><%= run.ended_at %></td>
-        <td><%= run.run_time %></td>
-        <td><%= run.success %></td>
+        <td><a href="run/<%=run[:id]%>">link</a></td>
+        <td><%= run[:started_at] %></td>
+        <td><%= run[:ended_at] %></td>
+        <td><%= run[:run_time] %></td>
+        <td><%= run[:success] %></td>
       </tr>
     <% end %>
   </tbody>

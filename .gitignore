@@ -2,5 +2,5 @@ pkg/*
 *.gem
 .bundle
 Gemfile.lock
-db/*.sqlite3
+db/
 .DS_Store

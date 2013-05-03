@@ -1,59 +1,73 @@
 require 'rspec'
 require 'rspec/core/formatters/base_formatter'
-require 'getting_dumped/models'
+require 'getting_dumped/migrations/create_tables'
+
 
 class GettingDumped < RSpec::Core::Formatters::BaseFormatter
   def initialize(options)
-    super
+    super(options)
+    @run_started_at = Time.now
+    @run = DB[:runs]
+    @example_db = DB[:examples]
     @success = true
-    @run = Run.create!(:started_at => Time.now)
+    @run_id = @run.insert(:started_at => Time.now)
   end
 
   def start(count)
-    super
+    super(count)
   end
 
   def example_started(example)
-    super
+    super(example)
   end
 
   def example_pending(example)
-    super
+    super(example)
     save_example(example)
   end
 
   def example_passed(example)
-    super
+    super(example)
     save_example(example)
   end
 
   def example_failed(example)
-    super
+    super(example)
     save_example(example)
     @success = false
   end
 
   def start_dump
     super
-    time = DateTime.now
-    @run.ended_at = time
-    @run.success = @success
-    @run.run_time = time - @run.started_at
-    @run.save
+    time = Time.now
+    @run.where('id = ?', @run_id).update(
+      :ended_at => time,
+      :success => @success,
+      :run_time => time - @run_started_at
+    )
   end
 
   private
 
   def save_example(example)
     metadata = example.metadata[:execution_result]
-    ex = Example.new(:name => example.full_description, :started_at => metadata[:finished_at], :finished_at => metadata[:finished_at],
-                     :run_time => metadata[:run_time], :status => metadata[:status], :run_id => @run.id)
+    exception = nil
+    backtrace = nil
+    exception = nil
     if metadata[:status] == "failed"
       exception = metadata[:exception_encountered] || metadata[:exception] # rspec 2.0 || rspec 2.2
-      ex.backtrace = exception.backtrace
-      ex.exception = read_failed_line(exception, example)
+      backtrace = exception.backtrace
+      exception = read_failed_line(exception, example)
     end
-    ex.save
+    @example_db.insert(:name => example.full_description,
+                       :status => metadata[:status],
+                       :run_id => @run_id,
+                       :run_time => metadata[:run_time],
+                       :started_at => DateTime.parse(metadata[:started_at].to_s),
+                       :finished_at => DateTime.parse(metadata[:finished_at].to_s),
+                       :exception => exception.to_s,
+                       :backtrace => backtrace.to_s
+                      )
   end
 
 end
