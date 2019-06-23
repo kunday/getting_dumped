@@ -10,7 +10,7 @@ class GettingDumpedServer < Sinatra::Application
   end
 
   get '/run/:id' do
-    @examples = DB[:examples].where('run_id = ?', params[:id]).all
+    @examples = DB[:examples].where(run_id: params[:id]).all
     erb :examples
   end
 end

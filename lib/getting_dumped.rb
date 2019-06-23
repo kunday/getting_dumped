@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rspec/core/formatters'
+require 'rspec'
 require 'getting_dumped/migrations/create_tables'
 
 class GettingDumped
@@ -26,7 +26,7 @@ class GettingDumped
 
   private
 
-  attr_reader :run_id
+  attr_reader :run
 
   def create_run
     run = DB[:runs]
@@ -46,7 +46,7 @@ class GettingDumped
     @example_db.insert(
       name: description,
       status: metadata[:status],
-      run_id: run_id,
+      run_id: run,
       run_time: metadata[:run_time],
       started_at: DateTime.parse(metadata[:started_at].to_s),
       finished_at: DateTime.parse(metadata[:finished_at].to_s),
