@@ -1,5 +1,7 @@
-require "getting_dumped"
-require "sinatra"
+# frozen_string_literal: true
+
+require 'getting_dumped'
+require 'sinatra'
 
 class GettingDumpedServer < Sinatra::Application
   get '/runs' do
@@ -8,7 +10,7 @@ class GettingDumpedServer < Sinatra::Application
   end
 
   get '/run/:id' do
-    @examples = DB[:examples].where("run_id = ?", params[:id]).all
+    @examples = DB[:examples].where(run_id: params[:id]).all
     erb :examples
   end
 end

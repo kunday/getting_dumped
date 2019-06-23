@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'sequel'
 
-DB = Sequel.connect("sqlite://db/examples.db")
+DB = Sequel.connect('sqlite://db/examples.db')
 DB.create_table? :examples do
   primary_key :id
   String :name

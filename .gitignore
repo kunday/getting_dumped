@@ -4,3 +4,4 @@ pkg/*
 Gemfile.lock
 db/
 .DS_Store
+.byebug_history

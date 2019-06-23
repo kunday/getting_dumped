@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'getting_dumped'
 require 'getting_dumped/app'
