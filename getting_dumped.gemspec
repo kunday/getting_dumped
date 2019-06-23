@@ -4,7 +4,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |s|
   s.name        = 'getting_dumped'
-  s.version     = '0.0.3.0'
+  s.version     = '0.0.4.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Arvind Kunday']
   s.email       = ['arvind@kunday.com']
